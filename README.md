@@ -62,3 +62,8 @@ def foo():
 | Number | Color | Size |
 |-------:|:------|:----:|
 | 83     | Black |  S   |
+
+```
+def my_function():
+  print("Hello from a function")
+```
