@@ -26,17 +26,31 @@
             body{
                 background-color: var(--bg-color);
                 color: var(--font-color);
+                margin: 0;
+                padding: 0;
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                display:flex;
+                flex-direction:column;
+                align-items:center;
             }
-
+            
+            header,footer{
+                width: 100%;
+                background-color: var(--secondary color);
+                padding:10px;
+                text-align:center;
+            }
+            
             h1{
                 color:var(--heading-color);
             }
 
     </style>
 </head>
-<body>
+<body onload="updateHeadingOnLoad()">
     <header>
-        <h1> Header</h1>
+        <h1 id="Greeting"> Header</h1>
         <button onclick="toggleTheme()">Toggle Theme</button>
     </header>
     <nav>
@@ -46,10 +60,12 @@
             <li><a href="#">Projects</a></li>        
             <li><a href="#">Contact</a></li>      
         </ul>
-        <form>
-            <input type="text" name="user_name" placeholder="Enter your name">
+        <form id="nameForm">
+            <input type="text" name="user_name" id="user_name" placeholder="Enter your name">
             <button type="submit">Apply!</button>
         </form>
+    
+        
     </nav>
     <main>
     <article>
@@ -113,21 +129,46 @@
                 const dateTimeString = `Current Date and Time: ${date} ${time}`;
                 document.getElementById('date-time').textContent = dateTimeString;
             }
+            function updateHeadingOnLoad(){
+                const params = new URLSearchParams(window.location.search);
+                const userName = params.get('user_name');
+                const greetingElement = document.getElementById('Greeting');
+                if (userName) {
+                    greetingElement.textContent = `Hello, ${userName}`;
+                } else {
+                    greetingElement.textContent = 'Guest';
+            }
+        
+            }
+            
+            //Function to update the heading
+            // Function to update the heading
+            function headingupdate() {
+                const userName = document.getElementById('user_name').value;
+                const greetingElement = document.getElementById('Greeting');
+
+            if (userName) {
+                greetingElement.textContent = `Hello, ${userName}`;
+            } else {
+                greetingElement.textContent = 'Guest';
+            }
+}
+
 
             updateDateTimeDisplay();
             setInterval(updateDateTimeDisplay,500);
+
+            //Add event listener for form submission
+            document.getElementById('nameForm').addEventListener('submit', function (event) {
+                event.preventDefault();
+                headingupdate();
+    });
             
 
 
         </script>
         
 
-            
-            
-
-
-        
-    
-    
+       
 </body>
 </html>
