@@ -86,7 +86,7 @@
     </main>
 
     <footer>
-        <p></p>
+        <p id='date-time'></p>
         <footer>      
             <p>©Copyright 2050 by nobody. All rights reversed.</p>    
         </footer>  
@@ -105,7 +105,17 @@
                 document.getElementById('Image_display').src = imageSrc;
                 document.getElementById('imageDescription').innerText = imageDescription;
             }
-            
+            // Function to update the displayed date and time
+            function updateDateTimeDisplay(){
+                const now = new Date();
+                const date = now.toLocaleDateString();
+                const time = now.toLocaleTimeString();
+                const dateTimeString = `Current Date and Time: ${date} ${time}`;
+                document.getElementById('date-time').textContent = dateTimeString;
+            }
+
+            updateDateTimeDisplay();
+            setInterval(updateDateTimeDisplay,500);
             
 
 
