@@ -4,10 +4,36 @@
     <meta charset="UTF-8"> 
     <link rel="stylesheet" href="style.css">
     <title>Assignment 3 webpage</title>
+
+    <style>
+        /* Light Theme */
+            :root {
+                --primary-color: rgb(255,255,255);
+                --secondary-color: #6c757d;
+                --bg-color: #f8f9fa;
+                --font-color: #212529;
+                --heading-color: #343a40;
+}
+            /*Dark Theme*/
+                [data-theme="dark"] {
+                --primary-color: rgb(0,0,0);
+                --secondary-color: #a8a8a8;
+                --bg-color: #212529;
+                --font-color: #fff;
+                --heading-color: #fff;
+}
+
+            body{
+                background-color: var(--bg-color);
+                color: var(--font-color);
+            }
+
+            h1{
+                color:var(--heading-color);
+            }
+
+    </style>
 </head>
-<script> 
-    
-</script>
 <body>
     <header>
         <h1> Header</h1>
@@ -25,7 +51,7 @@
             <button type="submit">Apply!</button>
         </form>
     </nav>
-<main>
+    <main>
     <article>
         <h2>Introduction to Quantum Computing </h2>        
         <p>A race is going on to build a computer that could solve problems in Physics, Mathematics and Cryptography within a short period of time. These are termed as quantum computers which uses the principles of quantum mechanics for their operations. </p>        
@@ -47,15 +73,7 @@
           </ul>      
     </aside>
 
-</main>
-
-
-</body>
-
-
-
-
-<body>
+    </main>
     <main>
         <h1>Quantum Computer</h1>
         <img id="Image_display" src="quantum_computer1.jpeg" alt="Quantum Computer Image">
@@ -65,18 +83,41 @@
         <button onclick="changeImage('qcVScc.png', 'Difference between a quantum computer and classical computer')">Quantum Computer vs Classical Computer</button>
         <button onclick="changeImage('qc_4.jpeg', 'Image 4')">Image 4</button>
         <button onclick="changeImage('qc_5.jpeg', 'Image 5')">Image 5</button>
-    
-        <script>
-            function changeImage(imageSrc, imageDescription) {
-                document.getElementById('Image_display').src = imageSrc;
-                document.getElementById('imageDescription').innerText = imageDescription;
-            }
-        </script>
     </main>
+
     <footer>
         <p></p>
         <footer>      
             <p>©Copyright 2050 by nobody. All rights reversed.</p>    
         </footer>  
+    </footer>
+
+
+        <script>
+            function toggleTheme(){
+                const currentTheme=document.documentElement.getAttribute('data-theme');
+                const newTheme=currentTheme === 'light' ? 'dark': 'light';
+                document.documentElement.setAttribute('data-theme',newTheme);    
+            }
+
+            // Function to change image
+            function changeImage(imageSrc, imageDescription) {
+                document.getElementById('Image_display').src = imageSrc;
+                document.getElementById('imageDescription').innerText = imageDescription;
+            }
+            
+            
+
+
+        </script>
+        
+
+            
+            
+
+
+        
+    
+    
 </body>
 </html>
