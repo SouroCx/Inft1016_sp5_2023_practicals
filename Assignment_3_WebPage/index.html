@@ -133,17 +133,26 @@
                 const dateTimeString = `Current Date and Time: ${date} ${time}`;
                 document.getElementById('date-time').textContent = dateTimeString;
             }
-            function updateHeadingOnLoad(){
+            function updateHeadingOnLoad() {
                 const params = new URLSearchParams(window.location.search);
                 const userName = params.get('user_name');
-                const greetingElement = document.getElementById('Greeting');
-                if (userName) {
-                    greetingElement.textContent = `Hello, ${userName}`;
+
+                if (!userName) {
+                // If 'user_name' is not present in the query string, check local storage
+                    const storedUserName = localStorage.getItem('user_name');
+                    if (storedUserName) {
+                // Use the stored user name if available
+                document.getElementById('Greeting').textContent = `Hello, ${storedUserName}`;
                 } else {
-                    greetingElement.textContent = 'Guest';
+                    // Default greeting for guests
+                    document.getElementById('Greeting').textContent = 'Guest';
+                }
+                } else {
+                    // If 'user_name' is present in the query string, use it
+                    document.getElementById('Greeting').textContent = `Hello, ${userName}`;
+                }
             }
-        
-            }
+
             
             //Function to update the heading
             function headingupdate() {
