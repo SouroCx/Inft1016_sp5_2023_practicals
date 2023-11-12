@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quantum Computer</title>
+</head>
+<body>
+    <main>
+        <h1>Quantum Computer</h1>
+        <img id="Image_display" src="quantum_computer1.jpeg" alt="Quantum Computer Image">
+        <p id="imageDescription">Picture of a Quantum Computer</p>
+        <button onclick="changeImage('qc1.jpeg', 'Image 1')">Image 1</button>
+        <button onclick="changeImage('qc_use.jpeg', 'Uses of Quantum Computer')">Uses</button>
+        <button onclick="changeImage('qcVScc.png', 'Difference between a quantum computer and classical computer')">Quantum Computer vs Classical Computer</button>
+        <button onclick="changeImage('qc_4.jpeg', 'Image 4')">Image 4</button>
+        <button onclick="changeImage('qc_5.jpeg', 'Image 5')">Image 5</button>
+    
+        <script>
+            function changeImage(imageSrc, imageDescription) {
+                document.getElementById('Image_display').src = imageSrc;
+                document.getElementById('imageDescription').innerText = imageDescription;
+            }
+        </script>
+    </main>
+</body>
+</html>
