@@ -113,6 +113,10 @@
             function toggleTheme(){
                 const currentTheme=document.documentElement.getAttribute('data-theme');
                 const newTheme=currentTheme === 'light' ? 'dark': 'light';
+
+                //Store the theme preference in local storage
+                localStorage.setItem('theme',newTheme);
+
                 document.documentElement.setAttribute('data-theme',newTheme);    
             }
 
@@ -142,7 +146,6 @@
             }
             
             //Function to update the heading
-            // Function to update the heading
             function headingupdate() {
                 const userName = document.getElementById('user_name').value;
                 const greetingElement = document.getElementById('Greeting');
@@ -152,9 +155,7 @@
             } else {
                 greetingElement.textContent = 'Guest';
             }
-}
-
-
+            }
             updateDateTimeDisplay();
             setInterval(updateDateTimeDisplay,500);
 
@@ -162,13 +163,15 @@
             document.getElementById('nameForm').addEventListener('submit', function (event) {
                 event.preventDefault();
                 headingupdate();
+
+                //Store the user name in local storage
+                const userName = document.getElementById('user_name').value;
+                localStorage.setItem('user_name',userName);
+
+                //Clear the input field after form submission
+                document.getElementById('user_name').value = '';
     });
             
-
-
-        </script>
-        
-
-       
+        </script>     
 </body>
 </html>
